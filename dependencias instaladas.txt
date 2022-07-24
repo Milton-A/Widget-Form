@@ -1,0 +1,11 @@
+npm install prisma
+npm install jest -D
+npx jest --init
+y
+y
+node
+y
+y
+npm install ts-node -D 
+para rodar ts (intalar o swc/jest)
+npm i @types/jest -D
