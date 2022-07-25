@@ -1,0 +1,10 @@
+expo
+R components (extensão vscode)
+npm install --save phosphor-react-native (Biblioteca de icones)
+npm install react-native-iphone-x-helpe
+react-native-bottom-sheet
+npm install @gorhom/bottom-sheet@^4
+expo install react-native-reanimated 
+(documentacao do expo reanimated, copiar o plugin e colar no babel)
+expo install react-native-gesture-handler
+(documentacao e copiar o API e importar no app.tsx)
