@@ -13,7 +13,7 @@ describe('Submit feedback', () => {
     await expect(submitFeedback.execute({
       type: 'BUG',
       comment: 'example comment',
-      Screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
+      screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
     })).resolves.not.toThrow();
 
     expect(createFeedbackSpy).toHaveBeenCalled();
@@ -24,7 +24,7 @@ describe('Submit feedback', () => {
     await expect(submitFeedback.execute({
       type: '',
       comment: 'example comment',
-      Screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
+      screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
     })).rejects.toThrow();
   });
 
@@ -32,7 +32,7 @@ describe('Submit feedback', () => {
     await expect(submitFeedback.execute({
       type: 'BUG',
       comment: '',
-      Screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
+      screenshot: 'data:image/png;base64,812egsu8afhasufhn12i3u',
     })).rejects.toThrow();
   });
 
@@ -40,7 +40,7 @@ describe('Submit feedback', () => {
     await expect(submitFeedback.execute({
       type: 'BUG',
       comment: 'example comment',
-      Screenshot: 'test.jpg',
+      screenshot: 'test.jpg',
     })).rejects.toThrow();
   });
 });

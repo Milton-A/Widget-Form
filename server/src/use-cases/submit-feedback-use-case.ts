@@ -1,43 +1,44 @@
 import { MailAdapter } from "../adapters/mail-adapter";
-import { FeedbacksRepositories } from "../repositories/feedbacks-repositories";
+import { feedbacksRepository } from "../repositories/feedbacks-repository";
 
-interface SubmitFeedbackUseCaseRequest{
+interface SubmitFeedbackUseCaseRequest {
   type: string;
   comment: string;
-  Screenshot ?: string;
+  screenshot?: string;
 }
 
-export class SubmitFeedbackUseCase {  
+export class SubmitFeedbackUseCase {
   constructor(
-    private feedbacksRepository: FeedbacksRepositories,
+    private feedbacksRepository: feedbacksRepository,
     private mailAdapter: MailAdapter,
-  ){}
+  ) { }
 
   async execute(request: SubmitFeedbackUseCaseRequest) {
-    const { type, comment, Screenshot} = request;
+    const { type, comment, screenshot } = request;
 
-    if (!type){
-      throw new Error ('Type is required.');
+    if (!type) {
+      throw new Error('Type is required.');
     }
-    if (!comment){
-      throw new Error ('Comment is required.');
+    if (!comment) {
+      throw new Error('Comment is required.');
     }
-    if (Screenshot && !Screenshot.startsWith('data:image/png;base64')) {
+    if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
       throw new Error('Invalid screenshot format.')
     }
-    
+    console.log(screenshot)
     await this.feedbacksRepository.create({
       type,
       comment,
-      Screenshot,
+      screenshot,
     })
 
     await this.mailAdapter.sendMail({
       subject: 'Novo Feedback',
       body: [
-        `<div style="font-family: sans-serif; font-size: 16px; color: #222; ">`,
-        `<p>Tipo do Feedback: ${type}</p>`,
+        `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
+        `<p>Tipo do feedback: ${type}</p>`,
         `<p>Comentário: ${comment}</p>`,
+        screenshot ? `<img src="${screenshot}">` : ``,
         `</div>`
       ].join('\n')
     })

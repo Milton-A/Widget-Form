@@ -8,3 +8,10 @@ expo install react-native-reanimated
 (documentacao do expo reanimated, copiar o plugin e colar no babel)
 expo install react-native-gesture-handler
 (documentacao e copiar o API e importar no app.tsx)
+
+Usar SNIPETS
+
+expo install react-native-view-shot  (para lidar com as capturas) 
+npm install axios (para lidar com requisições http)
+
+expo install expo-file-system
